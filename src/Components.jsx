@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 
+// Please put in your name here
+const student_name = "Quiz 2 taker";
+
+// All items are listed here, you don't have to modify anything 
+// of this menu_list array
 const menu_list = [
   {
     name: "apple",
@@ -19,6 +24,7 @@ function Page() {
   const [cart, setCart] = useState([]);
 
   const addToCart = (name, price, amount) => {
+    // function used to add item into cart
     if (!amount || amount <= 0) return;
     let idx = cart.findIndex((c) => c.name === name);
     if (idx !== -1) {
@@ -39,6 +45,7 @@ function Page() {
   };
 
   const deleteFromCart = (name) => {
+    // function used to remove item from cart
     let newCart = [...cart];
     let idx = cart.findIndex((c) => c.name === name);
     newCart.splice(idx, 1);
@@ -47,14 +54,18 @@ function Page() {
 
   return (
     <div className="page-wrapper">
-      <Menu addToCart={addToCart}></Menu>
-      <Cart cart={cart} deleteFromCart={deleteFromCart}></Cart>
+      <h1>{student_name}'s Farm</h1>
+      <div className="panel-wrapper">
+        <Menu addToCart={addToCart}></Menu>
+        <Cart cart={cart} deleteFromCart={deleteFromCart}></Cart>
+      </div>
     </div>
   );
 }
 
 function Cart(props) {
-  const calTotalToPay = (cart) => {
+  const calculateTotalToPay = (cart) => {
+    // Please write the logic to calculate total to pay of the cart here
     let price = 0;
     for (let i = 0; i < cart.length; i++) {
       price += cart[i].price;
@@ -66,7 +77,7 @@ function Cart(props) {
     <div className="container">
       <h1>CART</h1>
       <hr />
-      <h2>Total To Pay: ${calTotalToPay(props.cart)}</h2>
+      <h2>Total To Pay: ${calculateTotalToPay(props.cart)}</h2>
       <div className="item-wrapper">
         {props.cart.map((c, idx) => {
           return (
@@ -113,7 +124,7 @@ function Menu(props) {
         {menu_list.map((option, idx) => {
           return (
             <Option
-            key={idx}
+              key={idx}
               name={option.name}
               price={option.price}
               addToCart={props.addToCart}
@@ -143,8 +154,8 @@ function Option(props) {
       <div
         className="red-button"
         onClick={() => {
-            props.addToCart(props.name, props.price, amount)
-            setAmount(0)
+          props.addToCart(props.name, props.price, amount);
+          setAmount(0);
         }}
       >
         Add
