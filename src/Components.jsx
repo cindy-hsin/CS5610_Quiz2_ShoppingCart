@@ -24,32 +24,11 @@ function Page() {
   const [cart, setCart] = useState([]);
 
   const addToCart = (name, price, amount) => {
-    // function used to add item into cart
-    if (!amount || amount <= 0) return;
-    let idx = cart.findIndex((c) => c.name === name);
-    if (idx !== -1) {
-      let newCart = [...cart];
-      newCart[idx].amount += amount;
-      newCart[idx].price += amount * price;
-      setCart(newCart);
-    } else {
-      setCart([
-        ...cart,
-        {
-          name: name,
-          price: price * amount,
-          amount: amount,
-        },
-      ]);
-    }
+    // function used to add item into cart, with all information as parameters
   };
 
   const deleteFromCart = (name) => {
-    // function used to remove item from cart
-    let newCart = [...cart];
-    let idx = cart.findIndex((c) => c.name === name);
-    newCart.splice(idx, 1);
-    setCart(newCart);
+    // function used to remove item from cart with item's name
   };
 
   return (
@@ -63,14 +42,56 @@ function Page() {
   );
 }
 
+function Menu(props) {
+  return (
+    <div className="container">
+      <h1>MENU</h1>
+      <hr />
+      <div className="item-wrapper">
+        {menu_list.map((option, idx) => {
+          return (
+            <Option
+              key={idx}
+              name={option.name}
+              price={option.price}
+              addToCart={props.addToCart}
+            ></Option>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function Option(props) {
+    // You may have to deal with the amount state here
+    // while the input value is changing
+    // remeber to set the amount to 0 when an item is add to cart
+  const [amount, setAmount] = useState();
+  return (
+    <div className="option">
+      <h2>{props.name}</h2>
+      <h2>${props.price}</h2>
+      <input
+        type="number"
+        placeholder="amount"
+      />
+      <div
+        className="red-button"
+        onClick={() => {
+          props.addToCart(props.name, props.price, amount);
+        }}
+      >
+        Add
+      </div>
+    </div>
+  );
+}
+
 function Cart(props) {
   const calculateTotalToPay = (cart) => {
     // Please write the logic to calculate total to pay of the cart here
-    let price = 0;
-    for (let i = 0; i < cart.length; i++) {
-      price += cart[i].price;
-    }
-    return price;
+    return 0;
   };
 
   return (
@@ -112,56 +133,6 @@ function CartItem(props) {
         X
       </div>
     </div>
-  );
-}
-
-function Menu(props) {
-  return (
-    <div className="container">
-      <h1>MENU</h1>
-      <hr />
-      <div className="item-wrapper">
-        {menu_list.map((option, idx) => {
-          return (
-            <Option
-              key={idx}
-              name={option.name}
-              price={option.price}
-              addToCart={props.addToCart}
-            ></Option>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-function Option(props) {
-  const [amount, setAmount] = useState(0);
-
-  return (
-    <div className="option">
-      <h2>{props.name}</h2>
-      <h2>${props.price}</h2>
-      <input
-        type="number"
-        placeholder="amount"
-        value={amount}
-        onChange={(e) => {
-          setAmount(parseInt(e.target.value));
-        }}
-      />
-      <div
-        className="red-button"
-        onClick={() => {
-          props.addToCart(props.name, props.price, amount);
-          setAmount(0);
-        }}
-      >
-        Add
-      </div>
-    </div>
-    
   );
 }
 
