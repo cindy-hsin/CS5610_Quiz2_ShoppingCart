@@ -1,4 +1,4 @@
-# Stater Code for Quiz 2
+# Implementing An Ordering Page - Starter Code for Quiz 2
 Congrats! Your family's farm business is currently going well and it is time for you to apply your web skills to help build a web page for this rapidly growing business!
 
  You are asked to create a simple ordering web page. As part of the development team, you only need to fulfill two simple functions of the page: <strong>adding items to cart</strong> and <strong>removing items from cart</strong>. Try your best to finish that!
@@ -39,4 +39,3 @@ Hear are all the included components
 - <strong>CartItem</strong>: items in the cart
 
 You are welcome to create more components, but with previous tests, these five components should be enough. 
-
