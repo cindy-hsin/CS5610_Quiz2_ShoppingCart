@@ -31,7 +31,7 @@ hr{
     padding: 20px;
 }
 
-.option-button, .cart-item{
+.option, .cart-item{
     display: flex;
     height: 100px;
     width: 300px;
@@ -54,19 +54,23 @@ hr{
     border: 5px black solid;
 }
 
-.red-cross{
+.red-button{
     color: red;
-    font-size: 50px;
+    font-size: 20px;
     font-weight: bolder;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     cursor: pointer;
 }
 
-.red-cross:hover{
+.cross{
+    font-size: 50px;
+}
+
+.red-button:hover{
     color: rgb(153, 60, 60);
 }
 
-.option-button>input{
+.option>input{
     height: 30px;
     width: 100px;
     text-align: center;
