@@ -17,7 +17,7 @@ Congrats! Your family's farm business is currently going well and it is time for
 ### Add items to cart
 - Adding items to cart
 
-![Adding] (./pics/add.gif "adding")
+<img src="./pics/add.gif"/>
 - Increment number of item in cart
 
 ![Incrementing] (./pics/increment.gif "incrementing")
