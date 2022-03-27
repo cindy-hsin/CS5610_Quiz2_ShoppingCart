@@ -16,9 +16,11 @@ Congrats! Your family's farm business is currently going well and it is time for
 
 ### Add items to cart
 - Adding items to cart
-![Adding] (/pics/add.gif "adding")
+
+![Adding] (./pics/add.gif "adding")
 - Increment number of item in cart
-![Incrementing] (/pics/increment.gif "incrementing")
+
+![Incrementing] (./pics/increment.gif "incrementing")
 1. Before clicking the <strong>Add</strong> button: clients have to put in the amount of the item they want to purchase. Non-positive number or non-integer IS NOT ALLOWED. If an invalid number is input, no item should be created in the cart.
 2. After clicking the <strong>Add</strong> button: if it is a new item, create a new cart item on the cart panel; if the item has already been created in the cart, just simply increment the data of that item (both total amount and total price), based on the input number.
 3. After clicking the <strong>Add</strong> button: for the user-friendly purpose: the input field should be reset to 0
